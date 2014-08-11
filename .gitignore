@@ -1,0 +1,11 @@
+### External Dependencies ###
+node_modules/*
+
+### Compiled Files ###
+build/*
+**/.sass-cache/
+
+### temp and log Files ###
+**/*.temp*
+**/*.log
+**/*-log*

@@ -10,6 +10,14 @@
     will need to resolve manually.
 */
 
+Ext.Loader.setConfig({
+    enabled:true,
+    disableCaching: false,
+    paths: {
+        "Ext": 'touch/src'
+    }
+});
+
 Ext.application({
     name: 'SeaGrant_Proto',
     controllers: ["List"],
