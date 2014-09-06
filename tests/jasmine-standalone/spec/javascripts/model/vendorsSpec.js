@@ -1,4 +1,4 @@
-describe('SeaGrant_Proto.model.Vendor', function() {
+describe('SeaGrant_Proto.model.Vendors', function() {
 
     var model;
 
@@ -13,8 +13,8 @@ describe('SeaGrant_Proto.model.Vendor', function() {
     });
 
     it('exists', function() {
-        model = Ext.create('SeaGrant_Proto.model.Vendor');
-        expect(model.$className).toEqual('SeaGrant_Proto.model.Vendor');
+        model = Ext.create('SeaGrant_Proto.model.Vendors');
+        expect(model.$className).toEqual('SeaGrant_Proto.model.Vendors');
     });
 
     it('stores profile data on vendors', function() {
