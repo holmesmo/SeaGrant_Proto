@@ -35,6 +35,8 @@ describe('SeaGrant_Proto.model.Products', function() {
             name: 'Test Product Instance'
         });
         
+        //Justin will expect these to be moved into a helper function.
+        //Please see Justin if you have questions.
         expect(model.get('name')).toEqual('Test Product Instance');
         expect(model.get('story_id')).toBeNull();
         expect(model.get('alt_name')).toEqual('Pretend Product, Elaborate Ruse');

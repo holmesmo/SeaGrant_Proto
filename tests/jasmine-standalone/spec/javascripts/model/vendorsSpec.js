@@ -9,7 +9,7 @@ describe('SeaGrant_Proto.model.Vendors', function() {
 
     afterEach(function() {
         //Take down globals
-        model.destroy();
+        model = model.destroy();
     });
 
     it('exists', function() {
@@ -18,6 +18,7 @@ describe('SeaGrant_Proto.model.Vendors', function() {
     });
 
     it('stores profile data on vendors', function() {
-        //Test model fields
+        //Write vendor model field tests and then implement them such
+        //that they pass.
     });
 });
