@@ -4,7 +4,9 @@ isPresent = true;
 
 Ext.define('SeaGrant_Proto.controller.List', {
 	extend: 'Ext.app.Controller',
-	requires: ['Ext.MessageBox', 'Ext.device.Geolocation'],
+	// Note: Ext.device.Geolocation breaks jasmine testing by giving us a synchronous loading issue
+	requires: ['Ext.MessageBox'], 
+	// 'Ext.device.Geolocation'],
 	alias: 'cont',
 	config: {
 		refs: {
@@ -57,10 +59,12 @@ Ext.define('SeaGrant_Proto.controller.List', {
 	// stuff	######################################################################################	HOME
 	onSetUseLocation: function(index, record){
 		console.log('In controller(home): User Location toggle');
-		console.log(record._component._value[0]);
 		console.log(record);
+		console.log(record._component._value[0]);
+		
 		if(record._component._value[0] === 1){
 			// This updates the user's location and how far from their location they would like to search for vendors/products
+			onSetDistance(record);
 			Ext.device.Geolocation.watchPosition({
 			    frequency: 3000, // Update every 3 seconds
 			    callback: function(position) {
@@ -81,29 +85,29 @@ Ext.define('SeaGrant_Proto.controller.List', {
 	onSetDistance: function(index, record){
 		console.log("In controller(home): Distance from user chosen");
 		// console.log(record._value.data.val);
+		console.log('record ' + record);
 		SeaGrant_Proto.dist = record._value.data.val;
+	},
+	onHome: function(){
+		console.log(this);
+		var homeView = this.getHomeView();
+		console.log(homeView);
+		Ext.Viewport.setActiveItem(homeView);
 	},
 	onChooseLocation: function(index, record){
 		// We first check to see if a location is chosen, if one is we sort by locataion,
 		// then we check to see if a product is chosen, if one is we sort by product
 		console.log('In controller(home): Drop Down list Location');
 		// var loc = this.getHomeView();
-		// console.log(record);
+		console.log(record);
+		// console.log(index);
+		// console.log(this);
 		SeaGrant_Proto.location = record._value.data.title;
 		// console.log('Location is: '+ location);
 		// ALL FILTERS ONLY TAKE STRINGS, NONE WORK WITH VARABLES
-		// THAT ARE SELECED USING DROP DOWN TABLES, EVEN TOSTRING()
+		// THAT ARE SELECTED USING DROP DOWN TABLES, EVEN TOSTRING()
 		// FUNCTION WILL NOT WORK
 		var store = Ext.data.StoreManager.lookup('Vendor');
-		// OLD DATA THAT WORKED TO FILTER BY LOCATION ONLY
-		// var locationfilter = new Ext.util.Filter({
-		// 	filterFn: function(item, record){
-		// 		return item.get('city') === SeaGrant_Proto.location;
-		// 	},
-		// 	root: 'data'
-		// });
-		// store.clearFilter(); // this is the fix
-		// store.filter(locationfilter); //now it works
 		var len = store.data.all.length;
 		if(SeaGrant_Proto.location !== 'Please choose a location'){
 			var locationfilter = new Ext.util.Filter({
@@ -124,6 +128,8 @@ Ext.define('SeaGrant_Proto.controller.List', {
 					for(b = 0; b < item.data.products.length; b++){ // cycles through the vendor's products
 						// console.log(b+'  '+item.data.products[b].name);
 						if(item.data.products[b].name === SeaGrant_Proto.product){ // returns true for vendors with selected product
+							console.log(item.data.products[b].name);
+							console.log(SeaGrant_Proto.product);
 							return item.data.products[b].name === SeaGrant_Proto.product;
 						}
 					}				
@@ -144,7 +150,11 @@ Ext.define('SeaGrant_Proto.controller.List', {
 		var vendcount;
 		console.log(vendcount);
 		var homeView = this.getHomeView();
+		console.log('this');
+		console.log(this);
+		console.log(homeView);
 		var crud = homeView.getComponent('vendnum'); // gets our display item in from the home page
+		console.log(crud);
 		// This defines how the tpl data is printed out given the drop down table states
 		if ((SeaGrant_Proto.location !== 'Please choose a location') || (SeaGrant_Proto.product !== 'Please choose a product')){
 			if(SeaGrant_Proto.location === 'Please choose a location'){
@@ -468,10 +478,10 @@ Ext.define('SeaGrant_Proto.controller.List', {
 	// Initialize functions
 	launch: function(){
 		this.callParent(arguments);
-		// console.log("launch");
+		console.log("launch");
 	},
 	init: function(){
 		this.callParent(arguments);
-		// console.log("init");
+		console.log("init");
 	}
 });
