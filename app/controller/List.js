@@ -88,18 +88,12 @@ Ext.define('SeaGrant_Proto.controller.List', {
 		console.log('record ' + record);
 		SeaGrant_Proto.dist = record._value.data.val;
 	},
-	onHome: function(){
-		console.log(this);
-		var homeView = this.getHomeView();
-		console.log(homeView);
-		Ext.Viewport.setActiveItem(homeView);
-	},
 	onChooseLocation: function(index, record){
 		// We first check to see if a location is chosen, if one is we sort by locataion,
 		// then we check to see if a product is chosen, if one is we sort by product
 		console.log('In controller(home): Drop Down list Location');
 		// var loc = this.getHomeView();
-		console.log(record);
+		// console.log(record);
 		// console.log(index);
 		// console.log(this);
 		SeaGrant_Proto.location = record._value.data.title;
@@ -128,8 +122,8 @@ Ext.define('SeaGrant_Proto.controller.List', {
 					for(b = 0; b < item.data.products.length; b++){ // cycles through the vendor's products
 						// console.log(b+'  '+item.data.products[b].name);
 						if(item.data.products[b].name === SeaGrant_Proto.product){ // returns true for vendors with selected product
-							console.log(item.data.products[b].name);
-							console.log(SeaGrant_Proto.product);
+							// console.log(item.data.products[b].name);
+							// console.log(SeaGrant_Proto.product);
 							return item.data.products[b].name === SeaGrant_Proto.product;
 						}
 					}				
@@ -147,18 +141,18 @@ Ext.define('SeaGrant_Proto.controller.List', {
 			SeaGrant_Proto.Litem[j] = store.data.items[j].data;			
 			// console.log(SeaGrant_Proto.Litem[j]);
 		}
-		var vendcount;
-		console.log(vendcount);
+		SeaGrant_Proto.vendcount;
+		// console.log(vendcount);
 		var homeView = this.getHomeView();
-		console.log('this');
-		console.log(this);
-		console.log(homeView);
+		// console.log('this');
+		// console.log(this);
+		// console.log(homeView);
 		var crud = homeView.getComponent('vendnum'); // gets our display item in from the home page
-		console.log(crud);
+		// console.log(crud);
 		// This defines how the tpl data is printed out given the drop down table states
 		if ((SeaGrant_Proto.location !== 'Please choose a location') || (SeaGrant_Proto.product !== 'Please choose a product')){
 			if(SeaGrant_Proto.location === 'Please choose a location'){
-					vendcount = {
+					SeaGrant_Proto.vendcount = {
 						th: 'There are ',
 						numItems: store.getCount(),
 						v: ' vendors ',
@@ -169,7 +163,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 			}else{
 				if (SeaGrant_Proto.product !== 'Please choose a product'){
 					// console.log('Prod ok');
-					vendcount = {
+					SeaGrant_Proto.vendcount = {
 						th: 'There are ',
 						numItems: store.getCount(),
 						v: ' vendors ',
@@ -181,7 +175,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 					};
 				}else{
 					// console.log('Prod is horid');
-					vendcount = {
+					SeaGrant_Proto.vendcount = {
 						th: 'There are ',
 						numItems: store.getCount(),
 						v: ' vendors ',
@@ -192,7 +186,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 				}
 			}			
 		}
-		crud.setData(vendcount); // needed to display tpl data on home view
+		crud.setData(SeaGrant_Proto.vendcount); // needed to display tpl data on home view
 		Ext.Viewport.setActiveItem(homeView);
 	},
 	onChooseProduct: function(index, record){
@@ -236,11 +230,11 @@ Ext.define('SeaGrant_Proto.controller.List', {
 
 		var homeView = this.getHomeView();
 		var crud = homeView.getComponent('vendnum'); // gets our display item in from the home page
-		var vendcount;
+		SeaGrant_Proto.vendcount;
 		// This defines how the tpl data is printed out given the drop down table states
 		if ((SeaGrant_Proto.location !== 'Please choose a location') || (SeaGrant_Proto.product !== 'Please choose a product')){
 			if(SeaGrant_Proto.product === 'Please choose a product'){
-					vendcount = {
+					SeaGrant_Proto.vendcount = {
 						th: 'There are ',
 						numItems: store.getCount(),
 						v: ' vendors ',
@@ -251,7 +245,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 			}else{
 				if(SeaGrant_Proto.location !== 'Please choose a location'){
 					console.log('Prod ok');
-					vendcount = {
+					SeaGrant_Proto.vendcount = {
 						th: 'There are ',
 						numItems: store.getCount(),
 						v: ' vendors ',
@@ -263,7 +257,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 					};
 				}else{
 					console.log('Prod is horid');
-					vendcount = {
+					SeaGrant_Proto.vendcount = {
 						th: 'There are ',
 						numItems: store.getCount(),
 						v: ' vendors ',
@@ -275,7 +269,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 			}
 			
 		}
-		crud.setData(vendcount); // needed to display tpl data on home view
+		crud.setData(SeaGrant_Proto.vendcount); // needed to display tpl data on home view
 		Ext.Viewport.setActiveItem(homeView);
 	},	
 	onSortByVendorCommand: function(){
