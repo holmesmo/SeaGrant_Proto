@@ -37,7 +37,7 @@ describe('SeaGrant_Proto.controller.List',function() {
             }
         }));
         // STORE MOCKING ####################################################################################
-        // We need a store that can be refrenced in the onChooseLocation function
+        // We need a store that can be refrenced in functions
         jasmine.Ajax.install();
         store = Ext.create('SeaGrant_Proto.store.Vendor',{
             extend: 'Ext.data.store',
@@ -133,7 +133,7 @@ describe('SeaGrant_Proto.controller.List',function() {
         });
         // VARIABLE MOCKING #################################################################################
         thing;
-        // Here we mock a record to be passed into onChooseLocation function
+        // Here we mock a record to be passed into functions
         rec = {
             _baseCls: "x-field",
             _cls: [
@@ -211,8 +211,7 @@ describe('SeaGrant_Proto.controller.List',function() {
         // expect(store.data.length).toEqual(1);
         // CHECK THAT LITEM'S ARE CORRECTLY SET
         expect(SeaGrant_Proto.VstoreLength).toEqual(2);
-        console.log('looking for data in all the wrong places');
-        console.log(SeaGrant_Proto.Litem[0]);
+        
         expect(SeaGrant_Proto.Litem[0].city).toEqual('NewTest');
         expect(SeaGrant_Proto.Litem[0].lng).toEqual(-122);
         expect(SeaGrant_Proto.Litem[0].lat).toEqual(45);
@@ -222,9 +221,10 @@ describe('SeaGrant_Proto.controller.List',function() {
         expect(SeaGrant_Proto.Litem[1].lat).toEqual(45);
         expect(SeaGrant_Proto.Litem[1].name).toEqual('The ship');
         // CHECK VENDCOUNT
-        expect(vendcount).toEqual(2);
+        expect(SeaGrant_Proto.vendcount.numItems).toEqual(2);
     });
 
+    // test the onChooseProduct function now, after we test all of the home view functions of the controller, make a pull request
     it('onChooseProduct', function(){
         controller.onChooseProduct(thing, rec);
         expect(SeaGrant_Proto.product).toEqual('TestProduct');
