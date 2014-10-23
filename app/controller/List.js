@@ -1,7 +1,3 @@
-var isPresent;
-isPresent = true;
-
-
 Ext.define('SeaGrant_Proto.controller.List', {
 	extend: 'Ext.app.Controller',
 	// Note: Ext.device.Geolocation breaks jasmine testing by giving us a synchronous loading issue
@@ -10,13 +6,14 @@ Ext.define('SeaGrant_Proto.controller.List', {
 	alias: 'cont',
 	config: {
 		refs: {
-			homeView: 'home',
+			//homeView: 'home',
 			listView: 'listview',
 			detailView: 'detail',			
 			infoView: 'info',
 			specificView: 'specific'
 		},
 		control: {
+/*
 			homeView: {				
 				setUseLocation: 'onSetUseLocation',
 				setDistance: 'onSetDistance',
@@ -26,6 +23,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 				sortByProductCommand: 'onSortByProductCommand',
 				viewGoCommand: 'onViewGoCommand'				
 			},
+*/
 			listView: {
 				viewBackHomeCommand: 'onViewBackHomeCommand',
 				viewDetailCommand: 'onViewDetailCommand',
@@ -82,7 +80,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 		}
 	},
 	// This function may be unnecessary due to the fact that we set the distance in the callback function above
-	onSetDistance: function(index, record){
+	onSetDistance: function(record){
 		console.log("In controller(home): Distance from user chosen");
 		// console.log(record._value.data.val);
 		console.log('record ' + record);
