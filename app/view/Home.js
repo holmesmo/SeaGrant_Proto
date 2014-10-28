@@ -126,11 +126,11 @@ Ext.define('SeaGrant_Proto.view.Home', {
 	},
 	onDistance: function(record){
 		console.log('setDistance');
-		this.fireEvent('setDistance', this, record);
+		this.fireEvent('setDistance', record);
 	},
-	onSelectLocation: function(record, index){
+	onSelectLocation: function(record){
 		console.log('chosenLocation');
-		this.fireEvent('chosenLocation', this, record);
+		this.fireEvent('chosenLocation', record);
 	},
 	onSelectProduct: function(record){
 		console.log('chosenProduct');
