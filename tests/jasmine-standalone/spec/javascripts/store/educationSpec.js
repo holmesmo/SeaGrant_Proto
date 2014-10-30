@@ -21,4 +21,16 @@ describe('SeaGrant_Proto.store.Education',function() {
     it('Is populated with education data', function(){
         expect(store.data.items[0].data.text).toEqual('Ed item 1');
     });
+    it('Is populated with education data', function(){
+        expect(store.data.items[1].data.text).toEqual('Ed item 2');
+    });   
+    it('Is populated with education data', function(){
+        expect(store.data.items[2].data.text).toEqual('Ed item 3');
+    });
+    it('Is populated with education data', function(){
+        expect(store.data.items[3].data.text).toEqual('Ed item 4');
+    });
+    it('Is populated with education data', function(){
+        expect(store.data.items[4].data.text).toEqual('Ed item 5');
+    });
 });
