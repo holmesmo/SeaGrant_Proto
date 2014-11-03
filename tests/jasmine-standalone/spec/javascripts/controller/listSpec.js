@@ -190,7 +190,7 @@ describe('SeaGrant_Proto.controller.List',function() {
     });
 
     it('onSetDistance', function(){
-        controller.onSetDistance(thing, rec);
+        controller.onSetDistance(rec);
         expect(SeaGrant_Proto.dist).toEqual(75);
     });
 
@@ -226,7 +226,7 @@ describe('SeaGrant_Proto.controller.List',function() {
         // CHECK VENDCOUNT
     });
 
-    it('#onViewgoCommand', function() {
+    it('onViewgoCommand', function() {
 
         pending();
         
