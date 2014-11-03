@@ -6,7 +6,7 @@ Ext.define('SeaGrant_Proto.controller.List', {
 	alias: 'cont',
 	config: {
 		refs: {
-			//homeView: 'home',
+			homeView: 'home',
 			listView: 'listview',
 			detailView: 'detail',			
 			infoView: 'info',

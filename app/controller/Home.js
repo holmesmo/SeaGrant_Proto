@@ -4,6 +4,7 @@ Ext.define('SeaGrant_Proto.controller.Home', {
     config: {
 	refs: {
 	    homeView: 'home',
+	    listView: 'listview',
 	},
 	control: {
 	    homeView: {				
@@ -173,6 +174,59 @@ Ext.define('SeaGrant_Proto.controller.Home', {
 	Ext.Viewport.setActiveItem(homeView);
     },
 
+    onViewGoCommand: function(){
+	console.log('In controller(home): Go to List Page Button');
+	// TRYING TO RECENTER THE MAP ON LOAD OF LIST PAGE
+	// This WORKS to get a map centered at the correct location!!
+	// NOTE: THIS IS WHAT I FIRST THOUGHT THE APP WAS DOING: 
+	// "Note: that it doesn't work on the first press of the go button because gMap is not defined untill the 
+	// SeaGrantMap xtype is called in the list view."
+	// WHAT I REALLY NEED TO DO TO FIX IT WAS: make the timeout longer, so 
+	// I changed it from 100 to 1000.
+	// console.log('In Our wonderful Controller Go button function:');
+	// console.log(SeaGrant_Proto);
+	// THIS DYNAMICLY LOADS THE MAP MARKERS
+	var lat;
+	var lng;
+	var infowindow = new google.maps.InfoWindow();
+	SeaGrant_Proto.marker = new Array();
+	SeaGrant_Proto.cent = new Array();
+	for (k = 0; k < SeaGrant_Proto.VstoreLength; k++){
+	    lat = SeaGrant_Proto.Litem[k].lat;
+	    // console.log(lat);
+	    lng = SeaGrant_Proto.Litem[k].lng;
+	    // console.log(lng);
+	    SeaGrant_Proto.cent[k] = new google.maps.LatLng(lat, lng);
+
+	    //THIS IS THE BLOCK OF CODE THAT USES THE MARKER AS AN ARRAY
+	    // THIS FUNCTION CREATES EACH LIST ITEM MARKER
+	    SeaGrant_Proto.marker[k] = new google.maps.Marker({
+		map: SeaGrant_Proto.gMap,
+		animation: google.maps.Animation.DROP,
+		position: SeaGrant_Proto.cent[k],
+		clickable: true
+	    });
+	    // THIS FUNCTION ADDS A CLICKABLE MARKER INFO WINDOW FOR EACH SPECIFIC MARKER
+	    SeaGrant_Proto.marker[k].info = new google.maps.InfoWindow({
+        	content: SeaGrant_Proto.Litem[k].name
+            });
+            // NOW WE ADD AN ON CLICK EVENT LISTENER TO EACH MARKER
+            // WE WILL USE THIS LITENER TO OPEN THE SPECIFIC MARKER INFO THAT WAS CLICKED
+            console.log('This is the marker: (1)');
+	    console.log(SeaGrant_Proto.marker[k]);
+            google.maps.event.addListener(SeaGrant_Proto.marker[k], 'click', function(){
+        	// console.log(this.info.content);
+        	infowindow.setContent(this.info.content); // this makes it so that only one info window is displayed at one time
+        	infowindow.open(SeaGrant_Proto.gMap, this);
+            });
+	}
+	setTimeout(function() {
+            SeaGrant_Proto.gMap.panTo(SeaGrant_Proto.cent[0]);
+        }, 1000);
+        Ext.Viewport.animateActiveItem(this.getListView(), this.slideLeftTransition);
+    },
+
+
     // Home Controller Helper Functions
     buildInventorySummary: function(sourceObject){
 
@@ -203,6 +257,11 @@ Ext.define('SeaGrant_Proto.controller.Home', {
         }
 
         return summary;
-    }
+    },
+    slideLeftTransition: {
+	type: 'slide',
+	direction: 'left' 
+    },
+
 
 });
