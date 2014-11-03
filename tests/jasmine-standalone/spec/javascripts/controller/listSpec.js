@@ -1,6 +1,3 @@
-// Test suite is pending. It may be re-enabled by changing "xdescribe()"
-// to "describe()"
-
 describe('SeaGrant_Proto.controller.List',function() {
 
     // this is not neccisary, it adds the errors at the bottom of the console.logs
@@ -168,10 +165,6 @@ describe('SeaGrant_Proto.controller.List',function() {
         };
         // console.log('app created');
         // console.log(app);
-        // this checks that the controller is sourced correctly, see the top of List.js (WILL NEED TO REMOVE THIS)
-        if(isPresent === true){
-            console.log('present is true');
-        }
         controller = Ext.create('SeaGrant_Proto.controller.List', {application: app});
         // console.log('controller created');
         // console.log(controller);
@@ -233,14 +226,15 @@ describe('SeaGrant_Proto.controller.List',function() {
         // CHECK VENDCOUNT
     });
 
-    //Note I commented out a lot of the controller so that we could test
-    // continue commenting and uncommenting controller sections to get test to work
-    // it('#onViewgoCommand', function() {
-    //     console.log('#onViewgoCommand function');
+    it('#onViewgoCommand', function() {
 
-    //     controller.onHome();
-    //     controller.onChooseLocation();
-    //     var go = controller.onViewGoCommand();
-    //     // expect(SeaGrant_Proto.cent[0]).toBeTruthy();
-    // });
+        pending();
+        
+        console.log('#onViewgoCommand function');
+
+        controller.onHome();
+        controller.onChooseLocation();
+        var go = controller.onViewGoCommand();
+        expect(SeaGrant_Proto.cent[0]).toBeTruthy();
+    });
 });
