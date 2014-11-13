@@ -116,19 +116,19 @@ describe('SeaGrant_Proto.store.Product',function() {
         expect(store.getAt(0).get('name')).toEqual('Test Product Instance');
 
 	//data store 2
-	expect(store.getAt(0).get('origin')).toEqual('TEST2');
-        expect(store.getAt(0).get('available')).toEqual(TRUE);
-        expect(store.getAt(0).get('description')).toEqual('This product is merely conceptual in nature and cannot be purchased.');
-        expect(store.getAt(0).get('variety')).toEqual('testing2');
-        expect(store.getAt(0).get('season')).toEqual('year-round2');
-        expect(store.getAt(0).get('image')).toEqual(null);
-        expect(store.getAt(0).get('created')).toEqual('at testing time2');
-        expect(store.getAt(0).get('modified')).toEqual('never2');
-        expect(store.getAt(0).get('market_price')).toEqual(10.55);
-        expect(store.getAt(0).get('link')).toEqual(null);
-        expect(store.getAt(0).get('alt_name')).toEqual('Pretend Product, Elaborate Ruse2');
-        expect(store.getAt(0).get('story_id')).toEqual(null);
-        expect(store.getAt(0).get('name')).toEqual('Test Product Instance2');
+	expect(store.getAt(1).get('origin')).toEqual('TEST2');
+        expect(store.getAt(1).get('available')).toEqual(TRUE);
+        expect(store.getAt(1).get('description')).toEqual('This product is merely conceptual in nature and cannot be purchased.');
+        expect(store.getAt(1).get('variety')).toEqual('testing2');
+        expect(store.getAt(1).get('season')).toEqual('year-round2');
+        expect(store.getAt(1).get('image')).toEqual(null);
+        expect(store.getAt(1).get('created')).toEqual('at testing time2');
+        expect(store.getAt(1).get('modified')).toEqual('never2');
+        expect(store.getAt(1).get('market_price')).toEqual(10.55);
+        expect(store.getAt(1).get('link')).toEqual(null);
+        expect(store.getAt(1).get('alt_name')).toEqual('Pretend Product, Elaborate Ruse2');
+        expect(store.getAt(1).get('story_id')).toEqual(null);
+        expect(store.getAt(1).get('name')).toEqual('Test Product Instance2');
     });
 
     it('automatically populates itself with API data', function() {
