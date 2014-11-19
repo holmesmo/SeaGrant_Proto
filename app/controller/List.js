@@ -826,12 +826,8 @@ Ext.define('SeaGrant_Proto.controller.List', {
 	},
 	init: function(){
 		this.callParent(arguments);
-<<<<<<< HEAD
 		SeaGrant_Proto.path = [];
 		SeaGrant_Proto.pcount = 0;
 		// console.log("init");
-=======
-		console.log("init");
->>>>>>> Add mocking for testing controller functions
 	}
 });
