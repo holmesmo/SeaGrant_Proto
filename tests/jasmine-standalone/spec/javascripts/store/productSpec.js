@@ -20,7 +20,7 @@ describe('SeaGrant_Proto.store.Product',function() {
     it('calls out to the proper url', function() {
 	store.load();
 	var request = jasmine.Ajax.requests.mostRecent();
-	expect(request.url).toEqual('/newProducts.json');
+	expect(request.url).toEqual('http://seagrant-staging.osuosl.org/1/products');
     });
 
     it('loads data from an api', function(){
@@ -117,7 +117,7 @@ describe('SeaGrant_Proto.store.Product',function() {
 
 	//data store 2
 	expect(store.getAt(1).get('origin')).toEqual('TEST2');
-        expect(store.getAt(1).get('available')).toEqual(TRUE);
+        expect(store.getAt(1).get('available')).toEqual(true);
         expect(store.getAt(1).get('description')).toEqual('This product is merely conceptual in nature and cannot be purchased.');
         expect(store.getAt(1).get('variety')).toEqual('testing2');
         expect(store.getAt(1).get('season')).toEqual('year-round2');

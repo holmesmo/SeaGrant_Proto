@@ -5,7 +5,7 @@ Ext.define('SeaGrant_Proto.store.Location', {
 		autoLoad: true,
 		proxy: {
 			type: 'ajax',
-			url: '/newLocations.json',
+			url: 'http://seagrant-staging.osuosl.org/1/locations',
 			noCache: false,
 			reader: {
 				type: 'json',

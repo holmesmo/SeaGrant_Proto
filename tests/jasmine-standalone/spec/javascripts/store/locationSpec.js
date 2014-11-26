@@ -20,7 +20,7 @@ describe('SeaGrant_Proto.store.Location',function() {
     it('calls out to the proper url', function() {
 	store.load();
 	var request = jasmine.Ajax.requests.mostRecent();
-	expect(request.url).toEqual('/newLocations.json');
+	expect(request.url).toEqual('http://seagrant-staging.osuosl.org/1/locations');
     });
 
     it('loads data from an api', function(){

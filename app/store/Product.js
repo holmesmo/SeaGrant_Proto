@@ -5,7 +5,7 @@ Ext.define('SeaGrant_Proto.store.Product', {
 		autoLoad: true,
 		proxy: {
 			type: 'ajax',
-			url: '/newProducts.json',
+			url: 'http://seagrant-staging.osuosl.org/1/products',
 			noCache: false,
 			reader: {
 				type: 'json',
